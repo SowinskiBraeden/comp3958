@@ -21,6 +21,15 @@ let rotate_y (x, y, z) angle =
     ox *. sin(angle) +. oz *. cos(angle)
   );;
 
+let rotate_x (x, y, z) angle =
+  let oy = y in
+  let oz = z in
+  (
+    x,
+    oy *. cos(angle) -. oz *. sin(angle),
+    oy *. sin(angle) +. oz *. cos(angle)
+  );;
+
 let translate_z (x, y, z) dz =
   (x, y, z +. dz);;
 
@@ -65,6 +74,11 @@ let draw_face (a, b, c, d) angle =
   let vc = rotate_y vc angle in
   let vd = rotate_y vd angle in
 
+  let va = rotate_x va angle in
+  let vb = rotate_x vb angle in
+  let vc = rotate_x vc angle in
+  let vd = rotate_x vd angle in
+
   let va = translate_z va 1.25 in
   let vb = translate_z vb 1.25 in
   let vc = translate_z vc 1.25 in
@@ -104,7 +118,7 @@ let rec spin_cube angle =
 
   Graphics.synchronize ();
 
-  spin_cube (angle +. 0.0001);;
+  spin_cube (angle +. 0.000075);;
 
 let () =
   open_graph " 800x800+560+140";
