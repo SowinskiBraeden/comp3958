@@ -117,7 +117,8 @@ let test_dedup () =
   assert (dedup [] = []);
   assert (dedup [1] = [1]);
   assert (dedup [1; 2] = [1; 2]);
-  assert (dedup [1; 1; 2; 2; 2; 1; 3; 3; 2] = [1; 2; 1; 3; 2])
+  assert (dedup [1; 1; 2; 2; 2; 1; 3; 3; 2] = [1; 2; 1; 3; 2]);
+  assert (dedup [1; 1; 2; 2; 2; 1; 3; 3; 2; 4] = [1; 2; 1; 3; 2; 4])
 (**/**)
 
 (** [dedup l] takes in a list [l] and collapses consecutive duplicated
@@ -126,10 +127,10 @@ let dedup_tr l =
   let rec dedup' acc l =
     match l with
     | [] -> acc
-    | [x] -> l
+    | [x] -> reverse_tr (x :: acc)
     | x :: y :: zs ->
-      if x = y then dedup' (x :: acc) (x :: zs)
-      else x :: dedup' (x :: acc) (y :: zs)
+      if x = y then dedup' acc (x :: zs)
+      else dedup' (x :: acc) (y :: zs)
   in
   dedup' [] l;;
 

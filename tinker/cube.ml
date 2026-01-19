@@ -125,6 +125,6 @@ let () =
 
   auto_synchronize false;
 
-  spin_cube 0.;
+  spin_cube 0. 100;
 
   close_graph ()
