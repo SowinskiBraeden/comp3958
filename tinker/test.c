@@ -20,38 +20,6 @@ void print_vertecies(VEC3 v[], size_t s)
     printf("]");
 }
 
-VEC3 *gen_sphere_vertecies(int stacks, int slices, float r)
-{
-    // Generate sphere vectors
-    VEC3 *sphere_vertecies = malloc(stacks * slices * sizeof(VEC3));
-
-    for (int i = 0; i < stacks; i++)
-    {
-        // Phi (angle of latitude, ranges from 0 to PI)
-        float phi = M_PI * (float)i / (float)(stacks - 1);
-        float sinPhi = sin(phi);
-        float cosPhi = cos(phi);
-
-        for (int j = 0; j < slices; j++)
-        {
-            // Theta (angle of longitude, ranges from 0 to 2*PI)
-            float theta = 2.f * M_PI * (float)j / (float)slices;
-            float sinTheta = sin(theta);
-            float cosTheta = cos(theta);
-
-            // Convert spherical coordinates to Cartesian (x, y, z)
-            // The choice of axis mapping may vary. Here Y is vertical.
-            sphere_vertecies[i * slices + j] = (VEC3){
-                .x = r * cosTheta * sinPhi,
-                .y = r * cosPhi,
-                .z = r * sinTheta * sinPhi,
-            };
-        }
-    }
-
-    return sphere_vertecies;
-}
-
 int main(void)
 {
     int stacks = 10;
