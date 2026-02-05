@@ -19,7 +19,7 @@ let test_digits () =
     list [d]
   *)
 let int_of_digits d =
-  (List.fold_left (fun x acc -> (x + acc) * 10) 0 d) / 10;;
+  List.fold_left (fun x acc -> x * 10 + acc) 0 d;;
 
 (**/**)
 let test_int_of_digits () =
