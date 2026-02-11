@@ -8,12 +8,36 @@ let rec print_records r =
   | [] -> ()
   | x :: xs -> Printf.printf "%3d %s %s\n" x.score x.lastname x.firstname; print_records xs;;
 
+(** [compare_records r1 r2] compares records [r1] and [r2] based
+  * on score, then by lastname, then by firstname.
+  *)
+let compare_records r1 r2 =
+  compare
+    (r2.score, r2.lastname, r2.firstname)
+    (r1.score, r1.lastname, r1.firstname);;
+
+(**/**)
+let test_compare_records () =
+  assert (compare_records
+    {firstname = "homer"; lastname = "simpson"; score = 10}
+    {firstname = "marge"; lastname = "simpson"; score = 25}
+   > 0);
+  assert (compare_records
+    {firstname = "bart"; lastname = "simpson"; score = 25}
+    {firstname = "marge"; lastname = "simpson"; score = 25}
+   > 0);
+  assert (compare_records
+    {firstname = "marge"; lastname = "simpson"; score = 25}
+    {firstname = "bart"; lastname = "simpson"; score = 25}
+  < 0);;
+(**/**)
+
 (** [records_insert x l] inserts a record element [x] into
   * list of records [l]
   * Requires: [l] is in ascending order. *)
 let rec records_insert x l =
   match l with
-  | y :: ys when x.score < y.score -> y :: records_insert x ys
+  | y :: ys when compare_records x y > 0 -> y :: records_insert x ys
   | _ -> x :: l;;
 
 (**/**)
@@ -122,6 +146,7 @@ let test_read_file () =
 let run_all_tests () =
   test_parse();
   test_read_file();
+  test_compare_records();
   test_records_insert();
   test_sort_records();;
 (**/**)
