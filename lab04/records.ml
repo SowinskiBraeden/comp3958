@@ -1,17 +1,6 @@
 (** [record] of a person with a first name, last name, and score *)
 type record = {firstname: string; lastname: string; score: int};;
 
-(** [new_records f l s] creates a new record with the given firstname [f],
-  * lastname [l] and score [s] *)
-let new_record f l s = {firstname = f; lastname = l; score = s};;
-
-(**/**)
-let test_new_record () =
-  assert (new_record "a" "b" 1 = {firstname = "a"; lastname = "b"; score = 1});
-  assert (new_record "b" "a" 2 = {firstname = "b"; lastname = "a"; score = 2});
-  assert (new_record "c" "d" 3 = {firstname = "c"; lastname = "d"; score = 3})
-(**/**)
-
 (** [print_records r] takes a list of records [r] and prints
   * each record neatly to the console *)
 let rec print_records r =
@@ -25,7 +14,7 @@ let rec print_records r =
 let rec records_insert x l =
   match l with
   | y :: ys when x.score < y.score -> y :: records_insert x ys
-  | _ -> x :: l
+  | _ -> x :: l;;
 
 (**/**)
 let test_records_insert () =
@@ -50,14 +39,14 @@ let test_records_insert () =
       {firstname = "c"; lastname = "d"; score = 3};
       {firstname = "e"; lastname = "f"; score = 2};
       {firstname = "a"; lastname = "b"; score = 1}
-    ])
+    ]);;
 (**/**)
 
 (** [records_insertion_sort l] sorts list of records [l] in ascending order *)
 let rec sort_records l =
   match l with
   | [] -> []
-  | x :: xs -> records_insert x (sort_records xs)
+  | x :: xs -> records_insert x (sort_records xs);;
 
 (**/**)
 let test_sort_records () =
@@ -74,7 +63,7 @@ let test_sort_records () =
     {firstname = "c"; lastname = "d"; score = 3};
     {firstname = "e"; lastname = "f"; score = 2};
     {firstname = "a"; lastname = "b"; score = 1};
-  ])
+  ]);;
 (**/**)
 
 (** [parse l] takes in a line [l] and parses the line to extract
@@ -88,7 +77,7 @@ let rec parse l =
       | _ -> None
     )
   with
-  | Scanf.Scan_failure _ -> None
+  | Scanf.Scan_failure _ -> None;;
 
 (**/**)
 let test_parse () =
@@ -99,7 +88,7 @@ let test_parse () =
   assert (parse "Homer Simpson 5" =
     Some {firstname = "Homer"; lastname = "Simpson"; score = 5});
   assert (parse "Homer Simpson 5 blah blah blah" =
-    Some {firstname = "Homer"; lastname = "Simpson"; score = 5})
+    Some {firstname = "Homer"; lastname = "Simpson"; score = 5});;
 (**/**)
 
 (** [read_file acc ic] takes in an accumulator [acc] and an input channel [ic]
@@ -111,7 +100,7 @@ let rec read_file acc ic =
     | None -> read_file acc ic
     | Some v -> read_file (v :: acc) ic
   with
-  | End_of_file -> close_in ic; acc
+  | End_of_file -> close_in ic; acc;;
 
 (**/**)
 let test_read_file () =
@@ -126,16 +115,15 @@ let test_read_file () =
     {firstname = "ned"; lastname = "flanders"; score = 12};
     {firstname = "homer"; lastname = "simpson"; score = 25};
   ]);
-  assert (read_file [] @@ open_in "data2.txt" = [])
+  assert (read_file [] @@ open_in "data2.txt" = []);;
 (**/**)
 
 (**/**)
 let run_all_tests () =
-  test_new_record();
   test_parse();
   test_read_file();
   test_records_insert();
-  test_sort_records()
+  test_sort_records();;
 (**/**)
 
 (** main program entry from cli *)
