@@ -1,0 +1,6 @@
+"Rule: ocaml dependencies mli (%=bstree )": "!\134$\216+23\213\196T\181K\021\128\195\018"
+"Resource: /home/flami/Projects/comp3958/lecture06/functor/bstree.mli": "\194\172\208\246\172^Y\171\1563@\144\158H\027l"
+"Rule: ocaml: ml & cmi -> cmo (%=bstree )": "\172\028\140\193\160\2525\162\225\231@cE\2307\244"
+"Resource: /home/flami/Projects/comp3958/lecture06/functor/bstree.ml": "\228\211>\161\t\1291\180\144c_ \189\147\236x"
+"Rule: ocaml: mli -> cmi (%=bstree )": "\225aH6\244\021+9l\172\247\209 d\183\159"
+"Rule: ocaml dependencies ml (%=bstree )": "\031$\199\007@\208\227\1694l\138\193r\227\203\171"

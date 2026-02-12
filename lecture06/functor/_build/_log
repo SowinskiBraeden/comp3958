@@ -1,0 +1,12 @@
+### Starting build.
+# Target: /home/flami/.opam/default/bin/ocamlc.opt -config, tags: {  }
+/home/flami/.opam/default/bin/ocamlc.opt -config
+# Target: bstree.mli.depends, tags: { extension:mli, file:bstree.mli, ocaml, ocamldep, quiet }
+/home/flami/.opam/default/bin/ocamldep.opt -modules bstree.mli > bstree.mli.depends # cached
+# Target: bstree.cmi, tags: { byte, compile, extension:mli, file:bstree.mli, interf, ocaml, quiet }
+/home/flami/.opam/default/bin/ocamlc.opt -c -o bstree.cmi bstree.mli # cached
+# Target: bstree.ml.depends, tags: { extension:ml, file:bstree.ml, ocaml, ocamldep, quiet }
+/home/flami/.opam/default/bin/ocamldep.opt -modules bstree.ml > bstree.ml.depends
+# Target: bstree.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:bstree.cmo, file:bstree.ml, implem, ocaml, quiet }
+/home/flami/.opam/default/bin/ocamlc.opt -c -o bstree.cmo bstree.ml
+# Compilation successful.

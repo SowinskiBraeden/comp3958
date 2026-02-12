@@ -1,0 +1,8 @@
+module / struct
+module type / sig / interface
+
+open M
+let opem M in ..
+M.(...)
+
+
