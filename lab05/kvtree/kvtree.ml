@@ -129,12 +129,12 @@ module Make(Ord: OrderedType) = struct
     * key-value pair to a string, and applies that to all
     * key-value pairs in a given tree [t]. *)
   let to_string f t =
-    let rec aux acc t =
+    let rec aux t =
       match t with
       | L -> "#"
       | N (k, v, l, r) ->
-        Printf.sprintf "^(%s, %s, %s)" (f (k, v)) (aux acc l) (aux acc r)
+        Printf.sprintf "^(%s, %s, %s)" (f (k, v)) (aux l) (aux r)
     in
-    aux "" t;;
+    aux t;;
 
 end
