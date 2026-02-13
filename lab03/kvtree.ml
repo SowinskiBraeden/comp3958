@@ -17,6 +17,8 @@ let rec kvtree_insert ~cmp k v t =
     Node (k', v', kvtree_insert ~cmp k v l, r)
   | Node (k', v', l, r) when cmp k k' > 0 ->
     Node (k', v', l, kvtree_insert ~cmp k v r)
+  | Node (k', _, l, r) when cmp k k' = 0 ->
+    Node (k, v, l, r)
   | _ -> t;;
 
 (**/**)2

@@ -42,9 +42,11 @@ module Make(Ord: OrderedType) = struct
     match t with
     | L -> N (k, v, L, L)
     | N (k', v', l, r) when Ord.compare k k' < 0 ->
-      N (k', v', insert  k v l, r)
+      N (k', v', insert k v l, r)
     | N (k', v', l, r) when Ord.compare k k' > 0 ->
-      N (k', v', l, insert  k v r)
+      N (k', v', l, insert k v r)
+    | N (k', _, l, r) when Ord.compare k k' = 0 ->
+      N (k, v, l, r)
     | _ -> t;;
 
   (** [find_opt k t] takes a key [k] and a kvtree [t] and returns
