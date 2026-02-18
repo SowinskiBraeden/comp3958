@@ -55,9 +55,9 @@ module Make(Ord: OrderedType) = struct
     match t with
     | L -> None
     | N (k', _, l, _) when Ord.compare k k' < 0 ->
-      find_opt  k l
+      find_opt k l
     | N (k', _, _, r) when Ord.compare k k' > 0 ->
-      find_opt  k r
+      find_opt k r
     | N (_, v, _, _) -> Some v;;
 
   (** [largest t] finds the largest key in a given kvtree [t]
@@ -95,7 +95,7 @@ module Make(Ord: OrderedType) = struct
     * kvtree in the order specefied by the comparator [] to compare
     * keys *)
   let of_list  l =
-    List.fold_left (fun acc (k, v) -> insert  k v acc) L l;;
+    List.fold_left (fun acc (k, v) -> insert k v acc) L l;;
 
   (** [size t] takes a kvtree [t] and returns the size of the tree
     * i.e. number of Ns *)
@@ -130,13 +130,10 @@ module Make(Ord: OrderedType) = struct
   (** [to_string f t] takes a function [f] to "convert" a
     * key-value pair to a string, and applies that to all
     * key-value pairs in a given tree [t]. *)
-  let to_string f t =
-    let rec aux t =
-      match t with
-      | L -> "#"
-      | N (k, v, l, r) ->
-        Printf.sprintf "^(%s, %s, %s)" (f (k, v)) (aux l) (aux r)
-    in
-    aux t;;
+  let rec to_string f t =
+    match t with
+    | L -> "#"
+    | N (k, v, l, r) ->
+      Printf.sprintf "^(%s, %s, %s)" (f (k, v)) (to_string f l) (to_string f r);;
 
 end
