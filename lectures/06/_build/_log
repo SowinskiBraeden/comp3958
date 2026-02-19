@@ -1,0 +1,8 @@
+### Starting build.
+# Target: /home/flami/.opam/default/bin/ocamlc.opt -config, tags: {  }
+/home/flami/.opam/default/bin/ocamlc.opt -config
+# Target: two_list_queue.ml.depends, tags: { extension:ml, file:two_list_queue.ml, ocaml, ocamldep, quiet }
+/home/flami/.opam/default/bin/ocamldep.opt -modules two_list_queue.ml > two_list_queue.ml.depends
+# Target: two_list_queue.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:two_list_queue.cmo, file:two_list_queue.ml, implem, ocaml, quiet }
+/home/flami/.opam/default/bin/ocamlc.opt -c -o two_list_queue.cmo two_list_queue.ml
+# Compilation successful.

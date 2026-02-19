@@ -158,4 +158,3 @@ Scanf.scanf " %d" (fun x -> x)
 (* open_in "filename";; *)
 let ic = open_in "output";;
 input_line ic;;
-

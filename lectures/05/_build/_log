@@ -1,0 +1,12 @@
+### Starting build.
+# Target: /home/flami/.opam/default/bin/ocamlc.opt -config, tags: {  }
+/home/flami/.opam/default/bin/ocamlc.opt -config
+# Target: number_lines.ml.depends, tags: { extension:ml, file:number_lines.ml, ocaml, ocamldep, quiet }
+/home/flami/.opam/default/bin/ocamldep.opt -modules number_lines.ml > number_lines.ml.depends
+# Target: number_lines.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:number_lines.cmo, file:number_lines.ml, implem, ocaml, quiet }
+/home/flami/.opam/default/bin/ocamlc.opt -c -o number_lines.cmo number_lines.ml
+# Target: number_lines.cmx, tags: { compile, extension:cmx, extension:ml, file:number_lines.cmx, file:number_lines.ml, implem, native, ocaml, quiet }
+/home/flami/.opam/default/bin/ocamlopt.opt -c -o number_lines.cmx number_lines.ml
+# Target: number_lines.native, tags: { dont_link_with, extension:native, file:number_lines.native, link, native, ocaml, program, quiet }
+/home/flami/.opam/default/bin/ocamlopt.opt number_lines.cmx -o number_lines.native
+# Compilation successful.

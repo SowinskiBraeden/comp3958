@@ -82,14 +82,14 @@ module Make(Ord: OrderedType) = struct
     match t with
     | L -> L
     | N (k', v, l, r) when Ord.compare k k' < 0 ->
-      N (k', v, delete  k l, r)
+      N (k', v, delete k l, r)
     | N (k', v, l, r) when Ord.compare k k' > 0 ->
-      N (k', v, l, delete  k r)
+      N (k', v, l, delete k r)
     | N (_, _, l, L) -> l
     | N (_, _, L, r) -> r
     | N (_, _, l, r) ->
       let (ks, vs) = largest l in
-      N (ks, vs, delete  ks l, r);;
+      N (ks, vs, delete ks l, r);;
 
   (** [of_list l] takes a list of pairs [l] and creates a
     * kvtree in the order specefied by the comparator [] to compare

@@ -1,0 +1,5 @@
+"Rule: ocaml dependencies ml (%=records )": "\168\187\158\232\128I\157\015\216j\244\004\243\234\011\217"
+"Rule: ocaml: ml & cmi -> cmx & o (%=records )": "5\144\205\021B\003\025\204\145\159\255\166t\136\140^"
+"Resource: /home/flami/Projects/comp3958/lab04/records.ml": "\133\242qUUy2\188\b\134=\163c9\2142"
+"Rule: ocaml: ml -> cmo & cmi (%=records )": "\026zi!\193g\255\238<\162\135s\021\142\001\012"
+"Rule: ocaml: cmx* & o* -> native (%=records )": "C\176\141F\181\127\251\240\211V\156\t\167\208\129\177"
